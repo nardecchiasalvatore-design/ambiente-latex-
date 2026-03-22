@@ -1,0 +1,438 @@
+\documentclass[12pt]{book}
+
+\usepackage{graphicx}
+\graphicspath{{Immagini_Ambiente_Spaziale/}}
+
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage[italian]{babel}
+\usepackage[a4paper,left=2cm,right=2cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage{float}
+\usepackage{graphicx}
+
+
+\title{Ambiente Spaziale}
+\author{Salvatore Nardecchia}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage 
+\chapter{Introduction}
+\section{info e esame}
+\textcolor{red}{Testi Adottati}:\\
+\large Bertotti, Farinella, Vokrouhlicky ``Physics of the solar system''.\\
+\textcolor{red}{Website}:\\
+Si trovano dettagli in \href{https://sites.google.com/uniroma1.it/radioscience/team/luciano-iess}{questo sito}.\\
+\textcolor{red}{Esame}:\\
+Test a risposta multipla in 15 minuti, poi c'è l'orale in cui alza al massimo di 3 punti.
+Ci sono 2 appelli a giugno, 2 a luglio e 1 a settembre. 
+
+
+\chapter{I fili spaziali}
+\section{introduzione ai fili spaziali}
+I fili spaziali sono un perfetto esempio di come un sistema spaziale interagisce con l'ambiente.\\
+Infatti in una missione tale filo si spezzò (il filo era lungo 20km).
+Una cosa interessante da notare è che ci sono più livelli di iterazione del filo con l'ambiente. Infatti il filo è un conduttore che immerso in un campo magnetico si genera una differenza di potenziale che produce corrente e a sua volta  produce una spinta.\\
+
+\textcolor{red}{2°effetto}  $\rightarrow$ iterazione tra conduttore e ionosfera che può generare una spinta.\\
+
+\textcolor{red}{3°effetto} $\rightarrow$ \emph{Stabilizzazione gravitazionale}. Ci sono due posizioni di equilibrio:\\
+\begin{itemize}
+    \item[-]Instabile
+    \item[-] Stabile
+\end{itemize}\\
+Il campo gravitazionale della terra agisce come coppia stabilizzatrice che riporta il filo nella posizione di equilibrio. Quindi l'equilibrio è stabile. 
+\newpage
+\begin{figure}[h]
+\centering 
+\includegraphics[width=0.75\textwidth]{Immagini Ambiente Spaziale/Immagine2.png}
+\caption{Una foto del filo nello spazio}
+\label{fig:Immagine21}
+\end{figure}
+\subsection{Struttura del filo spaziale}
+il filo spaziale ha un diametro di 2.54\,\text{mm}, una resistenza elettrica di 0.12\,\text{ohm/m}, e una massa per metro di 8.2\,\text{g/m}. Esso è composto dai seguenti elementi:
+\begin{itemize}
+    \item \textcolor{red}{Nomex Core}$\rightarrow$\ Si trova nel nucleo ed è anche l'ultimo avvolgimento intorno al filo.
+    \item \textcolor{blue}{Calza di rame e stagno} $\rightarrow$\ Avvolge il nucleo di Nomex.
+    \item \textcolor{black}{Calza isolante}
+    \item\textcolor{green}{Strato di Kevlar}
+    \item \textcolor{red}{Nomex} $\rightarrow$\ tutto il filo è avvolto nel Nomex.(Il nomex reagisce poco con l'ossigeno atomico $O$ che è una specie con presenza rilevante alle quote dove opera il filo)
+\end{itemize}
+Le varie componenti del filo sono riportate nella figura sottostante. \`E importante notare che il filo è avvolto nel Nomex perché quest'ultimo reagisce poco con \emph{l'ossigeno atomico}. Tale specie risulta essere predominate alle quota dove deve operare il filo. 
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.75\textwidth]{Immagini Ambiente Spaziale/Immagine4.png}
+\caption{Le varie componenti di cui è composto il filo}
+\label{fig4:Immagine31}
+\end{figure}
+\subsection{TSS-1R Electrical Configuration}
+Suppongo di avere una barra che si muove in un campo magnetico uniforme  (con il cmapo magnetico perpendicolare alla velocità). Le cariche della barra si muovono e si genera una forza di Lorentz così fatta: $$F = \frac{q(\mathbf{v} \times \mathbf{B})}{c} \qquad E = \frac{\mathbf{v} \times \mathbf{B}}{c}$$
+Il simbolo c è stato inserito perché si usa il sistema cgs di Gauss.
+Se prendo come osservatore un'osservatore che si muove, E=0 all'interno del filo e V=0, quindi ci deve essere un campo elettrico che separa le cariche della barra, un campo elettrico "ambientale". Ovviamente il campo elettrico all'interno della barra risulta essere pari a 0 poiché la distribuzione delle cariche annula il campo elettrico esterno. 
+
+Nel caso del nostro filo spaziale come faccio a togliere gli elettroni catturati all'esterno dal filo(altrimenti non circola corrente all'interno di esso).Uso dei \textcolor{red}{dispositivi attivi} come l'electron gun. Questo dispositivo è formato da una valvola con un filamento e gli elettroni vengono sparati via. 
+Un'altro metodo potrebbe essere quello degli ioni, che se vengono "catturati" possono essere usati per per portare via gli elettroni catturati dall'esterno. Il problema è che lo shuttle è coperto da materiali ceramici a bassa conducibilitàe l'unico conduttore presente sono proprio i motor, però collezionano elettroni solo se sono allineati con la velocità. 
+
+Un'altro medoto utilizzato è quello dei \emph{\textcolor{red}{catodi cavi}}. 
+I catodi cavi sono dei dispositivi che creano delle scariche(una sorta di plasma artificiale). La differenza principale rispetto agli electron gun è che i catodi cavi vengono utilizzati come neutralizzatori per abbassare il potenziale del satellite. Inoltre sono dei dispositivi a \emph{bassa impedenza}.
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.75\textwidth]{Immagini Ambiente Spaziale/Immagine6.png}
+\label{fig4:Immagine41}
+\caption{Sistema del filo spaziale}
+\end{figure}
+
+
+Dalla figura possiamo calcolare facilemtne il potenziale Vs applicando semplici regole di elettrotecnica e considerando che i conduttori si comportano come conduttori ohmici, ovvero che seguono la prima legge di ohm, ottenendo: 
+\[
+V_{s}=V_{ind}-R\cdot I -V_{orb}-V_{teth}
+
+\]
+\section{Il filo nell'ambiente spaziale}
+Considero il filo che ruota nell'ambiente attorno alla terra in senso antiorario. Il suo moto orbitale immerso nel campo magnetico terrestre, come si può vedere nella figura 2.4, induce un campo elettrico lungo il filo. 
+\[
+E = v \times \frac{B}{c}\qquad \Delta V = \int_{0}^{l} \vec{E} \cdot d\vec{l} = \int_{0}^{l} (\vec{v}_0 \times \vec{B}) \cdot d\vec{l} = \frac{1}{c} (\vec{v}_0 \times \vec{B}) L
+\]
+Dove $L$ rappresenta il vettore filo lungo come il filo e con verso dal basso verso l'alto.
+L'integrale di $\Delta V$ è uguale a quella quantità perché il filo rimane dritto.
+Adesso andiamo a calcolare la corrente che circola nel filo usando la legge di Ohm (ho fatto l'ipotesi di conduttori ohmici).
+
+\[
+  I = \frac{\Delta V}{R_{tether} + R_{sh^+} + R_{sh^-} + R_i}
+\]
+
+Dove:
+\begin{itemize}
+  \item $R_{tether}$ = Resistenza del filo
+  \item $R_{sh^+}$ e $R_{sh^-}$ = Resistenza guaine terminali del filo (+ e - indicano le estremità)
+  \item $R_i$ = resistenza del circuito $\rightarrow$ resistenza della ionosfera
+\end{itemize}
+Adesso La corrente I va a interagire con il campo magnetico terrestre e si crea una forza 
+\[
+d\vec{F} = i\cdot d\vec{l} \times \vec{B}
+\]
+E integrando su tutto il filo ottengo tale relazone 
+\[
+F_{ed}=\int_{0}^{l} I\cdot d\vec{l} \times \vec{B} =  I \cdot \vec{L} \times \vec{B}
+
+\]
+(Ovviamente l'integrale lo risolvo semplicemente perché ho utilizzato le ipotesi fatte in precedenza)
+$\vec{L} \times \vec{B}$ esce dal piano della lavagna ed è una forza opposta al vettore velocità.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.75\textwidth]{Immagini Ambiente Spaziale/Immagine8.png}
+\label{fig4:Immagine51}
+\caption{Campo magnetico della terra}
+\end{figure}
+\subsection{Accellerazione del filo}
+Un'argomento interessante da analizzare è la velocità del filo rispetto alle linee di forza B. Il filo rallenta? In realtà accelera il filo anche se la forza calcolata precedentemente è opposta al vettore velocità. 
+Questa cosa accade perché se io freno diminuisco l'energia di tutto il sistema.
+$E_{tot} = E_{cin} + E_{pot} = \frac{1}{2}\cdot V^{2} - \frac{GM}{R}=cost$ (tutto fatto in unità di massa). 
+Posso ricavare inoltre la seguente formula 
+\[
+E_{tot}= -\frac{1}{2} \cdot \frac{GM}{R}
+\]
+Se freno diminusco l'energia totale di tutto il sistema. Quindi per fare ciò, dalla formula della Etot R deve diventare più piccolo. 
+Però per le orbite Kepleriane 
+\[
+V=\sqrt{\frac{GM}{R}} \qquad $P_{t}=VI$ (potenza dissipata)
+\]
+Quindi se R diventa più piccolo V aumenta. 
+Grazie a questa conclusione siamo in grado di capire che per andare a Mercurio devo indirizzare i propulsori in senso opposto alla velocità. 
+\subsection{Chiusura del filo}
+\textcolor{red}{Chiusura Remota}
+\begin{itemize}
+    \item La chiusura remota implica una grande scala di correnti allineate al campo
+    \item Gli impulsi di corrente si propagano e/o onde acustiche ioniche 
+    \item La chiusura avviene nella ionosfera inferiore
+\end{itemize}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.75\textwidth]{Immagini Ambiente Spaziale/Immagine9.png}
+\label{fig4:Immagine61}
+\caption{Chiusura remota del circuito}
+\end{figure}
+\textcolor{red}{Chiusura locale}
+\begin{itemize}
+    \item Ci sono delle onde elettrostatiche per cui ho tale chiusura locale
+    \item Le iterazioni del filo con la ionosfera avvengono localmente
+    \item Anche il lower hybrid waves van può essere cortocircuitato localmente. La frequenza naturale è :
+    \[
+    \omega = v_{0}/D = 10^{-4} \mathrm{rad/s}
+    \]
+    \end{itemize}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.75\textwidth]{Immagini Ambiente Spaziale/Immagine10.png}
+\label{fig4:Immagine71}
+\caption{Chiusura locale del circuito}
+\end{figure}
+
+
+
+\subsection{Quanto velocemente scende il filo?}
+Per calcolare quanto velocemente scende il filo andiamo a calcolare la potenza dissipata che risulta essere pari alla derivata dell'energia nel tempo
+\[
+P_{t}=VI = \frac{dE}{dt} = \frac{d}{dt}\cdot(-\frac{1}{2} \cdot \frac{GMm}{a})= \frac{1}{2} \frac{GMm}{a^2}\cdot \dot{a}
+\]
+Dove M indica la massa della terra e m la massa del sistema filo (shuttle ecc..) e ho usato la formula dell'energia totale ricavata nella sezione 2.2.1
+Dalla relazione ricavata della potenza dissipata ottengo 
+\[ 
+VI=\frac{1}{2} \frac{GMm}{a^2}\cdot \dot{a} \implies \dot{a} = \frac{2VIa^2}{GMm}
+\]
+Quindi la velocità di discesa è tanto più grande quanto è più grande la potenza dissipata, mentre è più piccola tanto è più grande m. E inserendo i dati caratterisitici ottengo che la velocità di discesa è dell'ordine di $10^{-3} \mathrm{m/s}$. Poiché in un giorno ci sono circa 86400\mathrm{s} allora ogni giorno il filo scende di 100m.
+Dalla relazione precedentemente ricavata ottengo:
+\[
+\frac{da}{dt}=\frac{2VIa^2}{GMm} \implies \ dt=\frac{GMmda}{VIa^2}
+\]
+Integriamo queste due equazioni 
+\[
+\int_{t1}^{t2} dt = \int_{a1}^{a2} \frac{GMm}{2VIa^2}da 
+
+\]
+Così ottengo il tempo di deorbitazione. 
+\subsection{Tensione nel filo}
+In questa sezione il problema analizzato riguarda la stabilizzazione del filo. Prima di addentrarci in tale trattazione dobbiamo sapere che sul filo oltre alle forze già citate nelle precedenti sezioni, agisce anche un'altra forza, ovvero la forza di gravità. Quest'ultima è una forza molto particolare e di difficile compresione che analizzeremo più avanti (basti pensare che è una forza che può essere annullata in base al sistema di riferimento in cui mi trovo).
+
+Supponiamo che il flo sia orientato lungo la verticale, e come si può ben vedere nella figura 2.7, sia il centro di massa che le due estremità si muovono lungo delle orbite kepleriane. In particolare la massa M1 si muove lungo tale orbita con velocità di $\omega_{0} = \sqrt{\frac{GM}{a^2}}$.
+Sempre dalla figura 2.7 notiamo che oltre alle forze già citate in precedenza, sul filo ci sono anche altre forze come la tensione e la forza centrifuga. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Immagini Ambiente Spaziale/Immagine11.png} 
+    \caption{Schema del filo}
+    \label{fig:Immagine11}
+\end{figure}
+Adesso andiamo ad analizzare le forze agenti sul filo, partendo dalla forza centrifuga agente sulla massa \emph{M1}:
+\[
+F_c=M_1\cdot r_1\cdot w_0^2
+
+\]
+Dove $r_1$ è la distanza dal centro della terra. Inoltre risulta che:
+\[
+F_c=M_1\cdot r_1\cdot w_0^2 > \frac{GMM_1}{r_1^2}
+\]
+Questo avviene perché la forza centrifuga e la forza di gravità sono uguali al centro di massa, mentre in $M_1$ poiché la distanza $r_1$ dalla terra è maggiore allora la forza centrifuga sarà maggiore della forza di gravità (M è la massa della terra nella formula)
+Facciamo lo stesso ragionamento per la seconda massa $M_2$
+\[
+F_c = M_2\cdot r_2 \cdot w_0^2 < \frac{GMM_2}{r_2^2}
+\]
+Tale sbilanciamento tra F.gravitazionale e F.centrifuga è compensato dalla tensione nel filo che adesso andiamo a calcolare.
+Per calcolarci tale tensione ci mettiamo nel sistema di riferimento del filo (un sist.di rif. rotante) e andiamo a considerare il potenziale che sarà dato dalla somma del potenziale gravitazionale e dal potenziale centrifugo. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{Immagini Ambiente Spaziale/photo_5897567483206504000_y.jpg} 
+    \caption{schema del potenziale}
+    \label{fig:Immagine12}
+\end{figure}
+Andiamo a calcolare l'accellerazione usando il gradiente del potenziale:
+\[
+ r_2=r_1+r \implies \ddot{r}=\ddot{r_2}-\ddot{r_1}=-\nabla{U_2}+\nabla{U_1}=-\nabla{U (r_1+r_2)}+\nabla{U (r_1)}
+\]
+Siccome poi la distanza r tra le due estremità del filo è piccola rispetto a $r_1$ allora posso linearizzare e ottengo:
+\[
+U\cdot (r_1+r) = U(r_1) +r\cdot\nabla{U(r_1)}
+\]
+adesso vado a sostituire nell'espressione di $a$ ottenendo:
+\[
+a=-\nabla{U(r_1)}-\nabla{r }\cdot \nabla{U(r_1)} + \nabla{U(r_1)}=-r\cdot \nabla \nabla{U(r_1)}
+\]
+Detto tensore di MARC (r l'ho portato fuori perché è constante). 
+Il potenziale, dato dalla somma del potenziale gravitazionale e quello centrifugo ha la seguente espressione(dove M è la massa della terra, $\omega$ è la velocità angolare e r è la distanza dalla terra):
+\[
+U(r) = -G\cdot\frac{M}{r}-\frac{1}{2}\cdot \omega^2 M^2
+
+\]
+Facciamo le derivate:
+\[
+\frac{\partial U}{\partial r}= \frac{GM}{r^2}-\omega^2r
+
+\]
+\[
+\frac{\partial^2 U}{\partial^2r}= -2\cdot \frac{GM}{r^3}-\omega^2
+\]
+Poiché $\sqrt \frac{GM}{r^3}$ allora posso ricavare la relazione finale:
+\[
+\frac{\partial^2 U}{\partial^2r}= -3\cdot \frac{GM}{r^3}
+
+\]
+E andandola a inserire nel tensore ricavato a pag.16 otteniamo l'equazione dell'accelerazione relativa:
+\[
+a_r=-3\cdot \frac{GM}{r^3} \cdot \frac{L}{r} =10\mathrm{cm/s^2}
+
+\]
+Dove L è la lunghezza del filo. 
+Se volgio ottenere la tensione mi basta moltiplicare $a_r$ per la massa del sottosatellite($500\mathrm{kg}$) e ottengo un valore di circa $50\mathrm{N}$($5\mathrm{kg}$).Quindi il filo non può essersi spezzato per via della tensione! 
+
+Esiste anche un altro metodo per il calcolo della tensione lungo il filo. 
+Considero un sistema più semplice e indico con $L_1$ e $L_2$ rispettivamente la distanza tra la massa in alto del filo e il center of mass, e la distanza tra la massa in basso e il center of mass. 
+\[
+r_1=r+L_1 \qquad r_2=r-L_2
+\]
+Nel centro di massa forza di gravità e forza centrifuga si uguagliano:
+\[
+\frac{GM\cdot (M_1 M_2)}{r^2} = (M_1M_2)\cdot\omega_0^2 r
+
+\]
+Per andare a visualizzare lo sbilanciamento linearizzo:
+\[
+\frac{1}{r_1^2}=\frac{1}{(r+L_1)^2}= \frac{1}{r^2}\cdot\frac{1}{(1+\frac{L_1}{r})^2}=\frac{1}{r^2}\cdot(1-2\frac{L_1}{r})
+\]
+E questo implica che:
+\[
+\frac{GMM_1}{r^2}\cdot(1-2\frac{L_1}{r})
+\]
+Poi vado a scomporre tale formula:
+\[
+M_1\omega_0^2 r_1 \implies M_1\omega_0^2r + M_1\omega_0^2L_1
+\]
+Lo sbilanciamento che ho nella masssa $M_1$ dove vale la disuguaglianza scritta a pag 16 ho che:
+\[
+-2\frac{GMM_1}{r^2}\cdot \frac{L_1}{r} -r_1\omega_0^2L_1 = -3\omega_0^2L_1r_1
+
+\]
+al di sotto avrò uno sbilanciamento del segno e con $L_2$ e $r_2$.
+Tale sbilanciamento è compensata dalla tensione del filo. 
+\subsection{Stabilizzazione}
+Suppongo di ruotare il filo in una posizione come rappresentata in figura. Scomponiamo la forza agenti(la forza centrifuga) sulle due masse lungo la verticale e l'orizzontale. Lungo la verticale la forza si cancella per via della presenza della tensione, quindi la forza lungo l'orizzontale non viene compensata e allora il filo si gira. 
+Il gradiente di gravità agisce come coppia stabilizzatrice. Per fili elettrodinamici c'è la coppia associata alla forza elettrodinamica che destabilizza il filo e ha una periodicità che è 2 volte il periodo orbitale (vicino alle frequenze naturali del filo). 
+
+\subsection{La rottura del filo}
+il filo nella missione spaziale si è rotto perché un oggetto metallico presente al suo interno ha forato il filo, liberando tutte le particelle dell'atmosfera terrestre nello spazio. Questi tomi vengono bombardati dagli ioni presenti che creano una ionizzazione che a sua volta crea una scarica che rompe il filo. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Immagini Ambiente Spaziale/Immagine7.png} 
+    \caption{L'immagine fa vedere il filo rotto}
+    \label{fig:Immagine14}
+\end{figure}
+\section{\textcolor{red}{Viral Theorem}}
+Se ho un sistema in cui i potenziali dipendono dalle distanze relative secondo la formula $U(r9=C\cdot r^n$, detta $<K>$ l'energia cinetica media e $<U>$ l'energia potenziale media, allora è soddisfatta tale equazione:
+\[
+2<K> -n\cdot<U>=0
+\]
+Nel caso delle forze gravitazionali $n=-1$ e $U=\frac{-GM}{r}$.\\[1cm]
+
+\textcolor{red}{\text{Check for a spacecraft orbiting planet}}
+\[
+K=\frac{mv^2}{2} \qquad v=\sqrt{\frac{GM}{r}}
+\]
+Applico il teorema:
+\[
+2K+U=  2\frac{mv^2}{2}-\frac{GMm}{r}=...=0 
+\]
+Quindi per orbite kepleriane tale teorema è soddisfatto.\\[1cm]
+\textcolor{red}{Altro esempio per forze gravitazionali}
+\[
+U=\frac{-GMm}{r} \qquad F=-\nabla{U}=-\frac{GMm}{r^2}\cdot\hat{r}=m\dot{v}
+\]
+\begin{itemize}
+    \item Multiply by r: $r\cdot F=-\frac{GMm}{r^2}=U(r)=mr\dot(v)$
+    \item Time derivative: \[ m \frac{d}{dt} (r \cdot v) = m v^2 + m r \cdot \dot{v} = 2T - \frac{GMm}{r} = 2T + U \]
+\end{itemize}
+Prendo la media di $<m  \frac{d}{dt} (r \cdot v> = <2T+U)>$. 
+Faccio l'ipotesi di un sistema chiuso ovvero dove \[r\cdot v=0\] perché v cambia segno e r è limitata, allora:
+\[
+2<K> + <U>=0
+\]
+Che verifica perfettamente il problema. 
+Questo teorema è molto importante poiché se conosco l'energia potenziale U media, posso ricavarmi facilmente l'energia cinetica media.
+\[
+<K> =-\frac{1}{2}<U>
+\]
+
+\chapter{Earth and planetary magnetic fields}
+Un argomento di fondamentale importanza nello studio dell'ambiente spaziale sono sicuramente i campi magnetici. Essi non sono solo importanti per l'effetto che hanno sugli oggetti che cirolano nello spazio come abbiamo visto nel caso del filo spaziale, ma sono sopratutto importanti per capire la struttura interna dei pianeti. Nel sistema solare non tutti i pianeti possiedono un campo magnetico, come ad esempio Marte e la Luna, dovuto principalemte alla mancanza di uno dei 3 ingredienti fondamentali per la generazione di un campo magnetico, che vedremo in seguito. Il campo magnetico più intenso all'interno del sistema solare è quello del pianeta Giove, che ha un intensità media all'equatore di $4.2 \mathrm{G}$, mentre per la terra è circa $0.31 \mathrm{G}$, rendedolo il secondo campo magnetico più intenso dopo quello di Giove. 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.75\textwidth]{Immagini Ambiente Spaziale/Immagini Ambiente Spaziale/Immagine 21.png} 
+    \caption{Campi magnetici dei pianeti del solar system}
+    \label{fig:Immagine14}
+\end{figure}
+\section{Origine}
+I campi magnetici sono generati da correnti elettriche che scorrono all'interno dei pianeti (ci sono ovviamente anche delle correnti esterne) e per generarsi hanno bisogno di questi 3 ingredienti fondamentali(Se uno dei 3 manca il campo magnetico non si genera):
+\begin{itemize}
+    \item Deve esserci uno strato conduttivo fluido
+    \item Il pianeta deve ruotare
+    \item Ci deve essere convezione all'interno dello strato fluido
+\end{itemize}
+Quindi, oltre al fatto che il pianeta deve ruotare, ci deve essere necessariamente uno strato liquido che, nel caso del nostro pianeta, è proprio il nucleo terrestre. Il fstto che l'interno del nostro pianeta è liquido ci è noto grazie a una delle proprietà delle onde sismiche(che vengono generate appositamente per studiare l'interno del nostro pianeta): Le onde sismiche si dividono onde di compressione(S) e onde di taglio(P). All'interno di un liquido si propagano sono e esclusivamente le onde di compressione, grazie a cui riusciamo a trarre la conclusione che all'interno del nostro pianeta è presente uno strato fluido. Purtroppo tale risultato non può essere ottenuto per pianeti privi di una superficie come ad esempio Giove o Saturno(anche se la presenza di un campo implica necessariamente che ci sia uno strato liquido). 
+Un altra cosa interessante da notare è che i campi magnetici di ogni pianeta vanno a creare delle fascie di radiazione intorno al pianeta stesso.
+\section{Earth and planetery magnetic fields}
+Adesso andiamo a trattare più da vicino i campi magnetici dei pianeti, in particolare il campo magnetico terrestre. 
+Il campo magnetico  è descritto da due set di parametri:
+\begin{itemize}
+    \item Declinazione  (D)
+    \item Inclinazione (I)
+    \item Intensità orizzontale (H)
+    \item Intensità verticale(Z)
+    \item Intensità totale($B_o$)
+    \item Componente nord dell'intensità orizzontale (X), che sarebbe il vero nord
+    \item Componente  east dell'intensità orizzontale (Y), che sarebbe il vero east
+\end{itemize}
+Tutte questi parametri sono ben descritti nella figura 3.2. Dalla figura notiamo che l'inclinazione I corrisponde all'inclinazione delle  linee di campo rispetto all'orizzontale locale, mentre D (declinazione o angolo di declinazione magnetica che è dell'ordine della decina di gradi) corrisponde al fatto che la componente orizzontale del campo non punta verso nord ma è declinato. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Immagini Ambiente Spaziale/Immagini Ambiente Spaziale/Immagine 15.1.png} 
+    \caption{Schematizzazione}
+    \label{fig:Immagine15}
+\end{figure}
+Il campo magnetico $B_0$ sulla superficie terrestre è espresso in termini della \emph{componente radiale A}, della \emph{componente orizzontale H}  e \emph{dell'angolo di declinazione magnetica D}, tutti riportati nella figura 3.3.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{Immagini Ambiente Spaziale/Immagini Ambiente Spaziale/Immagine 16.png} 
+    \caption{Schematizzazione}
+    \label{fig:Immagine16}
+\end{figure}
+Andiamo a calcolare le componenti del campo magnetico $B_0$ come fatto in figura 3.4:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{Immagini Ambiente Spaziale/Immagini Ambiente Spaziale/immagine 17.png} 
+    \caption{Componenti di $B_0$}
+    \label{fig:Immagine17}
+    
+\end{figure}
+Dalla figura 3.4 è proprio ben visibile $B_0$ è espresso in termini delle componenti A,H e I descritti precedentemente. 
+\subsection{Dipolar approximation of magnetic fields}
+In questa parte andiamo a trattare il campo magnetico dei pianeti tramite le equazioni matematiche. Per ora ci limitiamo allo studio del campo magnetico terrestre, non solo perché è di maggiore intersse per il corso, ma anche perché possiamo fare delle approssimazioni. 
+La prima approssimazione che facciamo è considerare il campo magnetico statico, approssimazione che può essere fatta nel caso terrestre in quanto il suo campo varia pochissimo nel tempo. Mentre la seconda approssimazione è l'assenza di correnti locali (anche nello spazio attorno alla terra). 
+Con tali approssimazioni possiamo scrivere le seguenti equazioni:
+\[
+\nabla\cdot B =0 \implies \text{B non ha sorgenti, tutte le sue line sono chiuse}
+\]
+\[
+\nabla \times \mathbf{B} = \frac{4\pi}{c} \mathbf{J} + \frac{1}{c}\frac{\partial \mathbf{E}}{\partial t}
+\]
+Dove $\frac{4\pi}{c}$ si riduce a 0 per via della seconda apporsimazione fatta (non ci sono correnti locali), e il termine $\frac{\partial \mathbf{E}}{\partial t}$ è molto piccolo quindi può essere trascurato. Le equazioni finali quindi diventano:
+\[
+\nabla\cdot \mathbf{B} =0
+\]
+\[
+\nabla \times \mathbf{B} = 0
+\]
+Poiché $\nabla \times \mathbf{B} = 0$, il campo magnetico è derivato da un potenziale quindi $B=-\nabla \cdot V_m$, dove con il termine $V_m$ indichiamo il potenziale magnetico(non l'ho definito ancora). 
+Sostituendo questa espressione di B all'equazione $\nabla\cdot \mathbf{B} =0$ otteniamo la seguente equazione:$\nabla \cdot B=-\nabla \cdot \nabla{V_m}=-\nabla^2{V_m}=0$. Quindi il potenziale magnetico soddisfa \emph{l'equazione di Laplace }, ovvero $-\nabla^2{V_m}=0$. \\[5pt]
+Come è fatto questo potenziale magnetico?\\[5pt]
+$V_m \sim \frac{1}{r^2}$ perché un potenziale del tipo $\frac{1}{r}$ è associato a linee di campo radiale con una sorgente (come nel caso del campo di gravità)
+\[
+V_m=-\frac{d\cdot r}{r^3}=-\frac{d\cdot \hat{r}}{r^2} \implies \text{potenziale di dipolo.}
+\]
+Questa è l'espressione del potenziale magnetico dove $d$ rappresenta il vettore momenti dipolo magnetico che è espresso in $\mathrm{Gcm^3}$ oppure in $\mathrm{Am^2}$(nel sistema internazionale). 
+Tale formula la dimostreremo dopo.\\[5pt]
+Derivo il campo dal potenziale grazie alla formula $\nabla \cdot \mathbf{B} = 0$ (con $\theta$ indico la colatitudine magnetica):
+\begin{itemize}
+    \item $V_m = -\frac{d \cdot \cos(\theta)}{r^2}$ 
+    
+\end{itemize}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.20\textwidth]{Immagini Ambiente Spaziale/Immagini Ambiente Spaziale/photo_5909136377050238571_y.jpg} 
+    
+    \label{fig:Immagine17}
+\end{figure}
+\[
+
+\]
+\end{document}

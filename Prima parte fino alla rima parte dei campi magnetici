@@ -435,4 +435,112 @@ Derivo il campo dal potenziale grazie alla formula $\nabla \cdot \mathbf{B} = 0$
 \[
 
 \]
+B_r=-\frac{\partial}{\partial r}\cdot V_m= -\frac{\partial}{\partial r}\cdot(-d\cdot\frac{\cos\theta}{r^2})=-2\frac{d}{r^3}\cdot\cos\theta
+\]
+Da quest ricaviamo che 
+\[
+B=\sqrt{B_\theta^2+B_r^2}=\frac{d}{r^3}\cdot\sqrt{4\cos^2\theta+\sin^2\theta}=\frac{d}{r^3}\sqrt{1+3\cos^2\theta}
+\]
+Per $\theta =0$(al polo nord) il campo è pari a $\frac{2d}{r^3}$.\\[1pt]
+Invece per $\theta =\frac{\pi}{2}$ il campo B è pari a $\frac{d}{r^3}$ .\\[1pt]
+Quindi se il campo lo rappresento come un dipolo all'equatore è all'incirca alla metà dei poli., infatti nel caso della terra $B=0.6 \mathrm{G}$ ai poli e invece all'equatore $B=0.31\mathrm{G}$.
+Per convenzione il dipolo magnetico è orientato verso il nord geografico. \\[2pt]
+\textcolor{red}{Di che corrente ho bisogno per generare il campo magnetico terrestre?}\\[2pt]
+Faccio l'esempio con la spira, di cui so ricavarmi il campo magnetico mettendomi sul piano della spira stessa.
+\[
+B(z)=\frac{\mu_0}{2\pi}\cdot\frac{AI}{(z^2+R^2)^{3/2}}
+\]
+Dove con z indico l'altezza,con R il raggio e con A l'area della spira.\\[2pt]
+Se metto la spira sul piano equatoriale e z=R=$R_e$, $B=0.3\mathrm{G}$ ottengo che la corrente vale $I=3\cdot 10^9 \mathrm{A}$
+
+\subsection{Campi magnetici planetari}
+Prima di parlare dei campi magnetici planetari parliamo dell'asse di tilt. L'asse di tilt è l'angolo tra il versore velocità angolare del pianeta e il versore campo magnetico (asse campo magnetico e asse di rotazione). 
+Come possiamo ben vedere dalla figura 3.5 e come ho già detto precedentemente il campo medio più intenso nel sistema solare appartiene al Giove, che è di circa $4.2\mathrm{G}$, mentre Saturno ha $0.21\mathrm{G}$ e la terra ha $0.31 \mathrm{G}$. Un interresante risultato viene dal pianeta Mercurio, che possiede un campo magnetico pari a $2\cdot10^-3 \mathrm{G}$, anche se è un rotatore lento (55giorni), se fosse un rotatore veloce il campo sarebbe più grande. Ricordiamo però che la rotazione di un pianeta è solo uno dei 3 ingredienti fondamentali per la generazione di un campo magnetico, infatti Marte è un rotatore veloce, ma possiede un campo magnetico molto basso, quasi tradcurabile, questo per via dell'assenza o della convenzione, oppure perché lo strato fluido è molto piccolo.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.75\textwidth]{Immagini Ambiente Spaziale/Immagini Ambiente Spaziale/Immagine 21.png} 
+    \caption{Campi magnetici dei pianeti del solar system}
+    \label{fig:Immagine14}
+\end{figure}
+\subsection{The earth surface field}
+Andiamo ad osservare più da vicino il campo magnetico del nostro pianeta attraverso due immagine (figure 3.6 e 3.7) che ci restituiscono chiaramente delle informazioni utili per comprendere a pieno il campo magnetico terrestre. Innanzitutto dalla figura 3.6 possiamo osservare chiaramente che il campo magnetico è più intenso nelle regioni della Siberia e del Canada(in corrsipondenza di quest'ultimo abbiamo il polo nord), mentre è ben evidente un altra zona denominata \emph{Anomalia Subatlantica}. In tale zona il campo magnetico è depresso, infatti costituisce una zona molto importante per quanto concerne l'industria spaziale poiché, per via della minore intensità del campo magnetico in tale zona, le radiazioni solari sono più intense(spieghermo meglio dopo tale tematica) e quindi possono creare problemi a satelliti e astronauti. Una cosa interessante riguarda un fatto avvenuto a degli astronauti che, durante una missione, in corrispondenza di tale zona hanno dichiarato di vedere dei veri e propri flash. Questo avviene poiché le particelle provenienti dal sole riescono a penetrare in tale zona e a entrare in contatto con la cornea , provocando delle scariche elettriche che vengono viste come dei flash.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.90\textwidth]{Immagini Ambiente Spaziale/Immagini Ambiente Spaziale/Immagine 23.png} 
+    \caption{Campo magnetico sulla superficie terrestre}
+    \label{fig:Immagine14}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{Immagini Ambiente Spaziale/Immagini Ambiente Spaziale/Immagine 22.png} 
+    \caption{Immagine con le zone dove B è constante}
+    \label{fig:Immagine14}
+\end{figure}
+Adesso andiamo a trattare il problema riguardante la staticità del campo B. Noi avevamo fatto, precedentemente, l'assunzione che il campo magnetico sia più o meno constante (approssimazione che va benissimo), in realtà il campo magnetico terrestre varia, secondo due specifiche:
+\begin{itemize}
+    \item \textbf{Vairabilità a corto termine} $\implies$ Dovuto a correnti esterne che nascono per via dell'attività solare.
+    \item \textbf{Variazioni lente} $\implies$ Dovuto a fatto che le correnti all'interno della terra cambiano nel tempo.
+\end{itemize}
+Dalla figura 3.8 possiamo facilmente notare che ci sono delle zone nel nostro pianeta dove B varia in maniera constante(la sua velocità di diminuzione è constante). Ad esempio in Antartide è pari a $-156\cdot 10^{-5} $\mathrm{G/year}.
+In maniera particolare la  velocità di diminuzione di B è pari a:
+\[
+B(r)=B_0 -1.56\cdot 10^{-3}t
+\]
+Dove t è espresso in anni.\\[2pt]
+Con qualevelocità di diminuzione, in quanto tempo B va a zero?\\[2pt]
+\[ 0.6-1.56\cdot 10^{-3}t \implies t=\frac{0.6}{1.56\cdot 10^{-3} } \sim = \frac{1}{25}10^{-3} \]
+Che sono meno di 1000 anni!\\[2pt]
+Non sappiamo se il campo magnetico terrestre svanirà, ma sappiamo che ha cambiato polarità molto volte negli ultimi 100 milioni di anni, quindi il vettore dipolo magnetico gira. Ora siamo vicini a un periodo di instabilità del campo magnetico. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{Immagini Ambiente Spaziale/Immagini Ambiente Spaziale/Immagine 24.png} 
+    \caption{Immagine con le zone dove la velocità di diminuzione di B è constante}
+    \label{fig:Immagine14}
+\end{figure}
+\section{Spherical harmonics}
+In questa sezione andiamo a guardare più da vicino la seguente formula (ricavata in precedenza):
+\[
+\nabla^2V=0 \implies \frac{\partial^2 V}{\partial x^2} + \frac{\partial^2 V}{\partial y^2} + \frac{\partial^2 V}{\partial z^2}=0
+\]
+Provo a risolvere tale equazione utilizzando dei polinomi \emph{omogeni}, perché se non lo fossero non potremmo risolvere tale problema.\\[2pt] 
+1. Polinomio omogeneo di grado 0 (soddisfa l'eqauzione):
+$$P_0(x, y, z) = k$$
+
+2. Polinomio omogeneo di grado 1 (soddisfa l'equazione):
+$$P_1(x, y, z) = ax + by + cz$$
+
+3. Polinomio omogeneo di grado 2:
+$$P_2(x, y, z) = ax^2 + by^2 + cz^2 + dxy + exz + fyz$$
+Per quanto riguarda il polinomio di grado 2 affinché soddisfi l'equazione di Laplace deve essere che:\\[2pt]
+\[ \nabla^2P_2(x;y;z)=2a+2b+2c=0 \implies a+b+c=0\]
+Da questa ricaviamo che $c=-(a+b)$ \\[2pt]
+Sostituisco e ottengo
+\[
+P_2 = a(x^2 - z^2) + b(y^2 - z^2) + dxy + eyz + fxz \qquad \text{and} \qquad \nabla^2 P_2 = 0
+\]
+Si può dimostrare che per il generico polinomio di grado 3 i coefficienti sono 10. Inoltre, non si ha una sola relazione tra i coefficienti come nel caso del polinomio di grado 2, ma per polinomio di grado 3 abbiamo tre relazioni. Quindi il numero di coefficienti indipendenti che dobbiamo utilizzare è 7 (dimostrazione sulle slide in verde).
+Si può dimostrare che esistono $2l+1$ polinomi indipendenti omogenei la cui combinazione lineare puòessere utilizzata per costruire una soluzione dell’equazione di Laplace tramite polinomio di grado $2l$  (Con $l$ indico il grado del polinomio).\\[2pt]
+Tutti questi polinomi armonici che soddisfanon l'equazione di Laplace sono detti \textbf{armonici}
+
+\subsection{Dimostrazione facoltativa}
+\textbf{Teorema}: \\[2pt]
+Per ogni intero l, esistono $2l+1$ omogenei, linearmente indipendenti e polinomi armonici di grado l. \\[2pt]
+Consideriamo il generico polinomio omogeneo bidimensionale di grado $n$:
+
+$$\varphi_n(x,y) = a_0 x^n + a_1 x^{n-1} y + a_2 x^{n-2} y^2 + \dots + a_n y^n$$
+
+Questo polinomio ha $n+1$ coefficienti. Il generico polinomio omogeneo tridimensionale può essere scritto come:
+
+$$P_n(x,y,z) = b_0 z^n + z^{n-1} \varphi_1(x,y) + z^{n-2} \varphi_2(x,y) + \dots + \varphi_n(x,y)$$
+
+Il numero di coefficienti di $P_n$ è:
+
+$$1 + 2 + 3 + \dots + (n+1) = \frac{(n+1)(n+2)}{2}$$
+Applicando l'operatore di Laplace a $P_n$ si riduce il grado del polinomio omogeneo di 2, portandolo a $n-2$. I coefficienti del polinomio $\nabla^2 P_n$ sono quindi legati da $(n-1)n/2$ relazioni, pertanto vi sono $2n+1$ polinomi armonici omogenei e indipendenti di grado $n$:
+
+$$ \frac{(n+1)(n+2)}{2} - \frac{(n-1)n}{2} = 2n+1 $$
+\subsection{The spherical harmonics expansion }
+I polinom i che abbiamo trovato essere soluzione dell'equazione di Laplace però divergono all'infinito, cosa che non accade per il potenziale. Per questo motivo andiamo ad enunciare il seguente teorema.\\[2pt]
+\textbf{Teorema}\\[1pt]
+
 \end{document}

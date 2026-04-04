@@ -542,5 +542,126 @@ $$ \frac{(n+1)(n+2)}{2} - \frac{(n-1)n}{2} = 2n+1 $$
 \subsection{The spherical harmonics expansion }
 I polinom i che abbiamo trovato essere soluzione dell'equazione di Laplace però divergono all'infinito, cosa che non accade per il potenziale. Per questo motivo andiamo ad enunciare il seguente teorema.\\[2pt]
 \textbf{Teorema}\\[1pt]
+I polinomi che abbiamo trovato essere soluzione dell'equazione di Laplace però divergono all'infinito, cosa che non accade per il potenziale. Per questo motivo andiamo ad enunciare il seguente teorema.\\[3pt]
+\textbf{Teorema}\\[1pt]
+Se $P_l(r)$ è un polinomio armonico allora anche il polinomio $\frac{P_l(r)}{r^2l+1}$, con $r=\sqrt{x^2+y^2+z^2}$, è un polinomio armonico. \\[2pt]
+Il vantaggio principale è che all'infinito va a 0, infatti $\frac{P_l}{r^2l+1}\sim\frac{1}{r^2l+1}$, il problema è che questo tipo di polinomio va all'infinito al centro della terra,quindi vale a distanze lontane dal centro della terra. \\[1pt]
+Infatti\[
+\nabla \times B=\frac{4 \pi J}{L} 
+\]
+Al centro della terra ci sono correnti quindi il campo magnetico è diverso da 0 lì!\\[\2pt]
+Il nostro obiettivo è trovare una base ortonormale per rappresentare B, quindi andiamo a esprimere il polinomio $P_l$ in coordinate sferiche. \[
+P_l(x,y,z)=r^l\Psi_l(\theta,\phi)
+\]
+Dove: \begin{itemize}
+    \item $\Psi$=spherical harmonics of degree l 
+    \item $\theta$=colatitudine
+    \item $\phi$=longitudine 
+\end{itemize}
+ $\Psi_{lm}$ e $x,y,z$ in coordinate sferiche sono così rappresentate:\[
+\begin{align}
+x &= r \sin(\theta)\cos(\phi) \\
+y &= r \cos(\theta)\sin(\phi) \\
+z &= r \cos(\theta)
+\end{align}
+\]
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{Immagini Ambiente Spaziale/Immagini Ambiente Spaziale/Immagine 25.png} 
+    \caption{Per il potenziale magnetico terrestre nello spazio circumterrestre, sia interno
+e le fonti esterne possono contribuire come in figura 
+}
+    \label{fig:Immagine14}
+\end{figure}
+Se togliamo la parte di dipendenza da $r$ (lo metto uguale a 1) da $P_l$, su tale sfera (di raggio 1) esiste una base ortonormale di funzioni di $\theta$e $\phi$ che ci permettono di esprimere i polinomi armonici su tale base. Ognuna delle $2l+1$ funzioni indipendenti è identificata dal suo ordine m, dove m è detto indice magnetico e mi dice quale armonica, fra tutte quelle presenti, sto selezionando.Per riassumere:
+\begin{itemize}
+    \item L: indica il grado del polinomio da cui sono partito 
+    \item m: identifico l'armonica sferica 
+\end{itemize}
+La funzione $\Psi_{lm}$  la esprimo così: \[
+\Psi_{lm}(\theta,\phi)=N_{lm}P_{lm}(\cos{\theta})e^{im\phi}}
 
+\]
+Questa è proprio la funzione armonica con norma 1 rispetto al prodotto scalare che è la media sulla sfera del prodotto di due funzioni. Andiamo ad analizzare i componenti di questa funzione:
+\begin{itemize}
+    \item $N_{lm}$: fattore di normalizzazione pari a:$\sqrt{2l+1}\sqrt{\frac{(l-m)!}{(l+m)!}}$. Così l'armonica sferica è unitaria e completa la base della sfera unitaria. 
+    \item $P_{lm}$ è detta funzione associata di Legendre che vengono spiegate nel sezione successiva (argomento facoltativo).
+    
+\end{itemize}
+Adesso andiamo a prendere due funzioni definite sulla sfera $f(\theta,\phi)$ e $g(\theta,\phi)$ e definisco il prodotto scalare $V\times V \implies R,C$
+\begin{itemize}
+    \item commutativo $<f|g>=<g\f>$
+    \item $<f|\lambda g>=\lambda<f|g>$ con $\lambda$ reale.
+    \item $<f|g+h>=<f|g>+<f|h>$
+\end{itemize}
+Dove $\frac{1}{4\pi}\int_{\Omega}\int_{\Omega} f^*(\theta,\varphi)\cdot g(\theta,\varphi)\,d\Omega$
+che è propiro la media sulla sfera (il prodotto scalare è la media sulla sfera).\\[1pt]
+Se considero le funzioni $\Psi_{lm}(\theta,\phi)=N_{lm}P_{lm}(\cos{\theta})e^{im\phi}}$ esse soddisfano tale proprietà:\[
+Y_{lm}(\theta,\phi)=Y_{l,-m}^{*}(\theta,\phi)
+\]
+Inoltre soddisfano anxhe le proprietà sovra citate, quindi:\[
+\langle Y_{lm}(\theta,\phi)\mid Y_{lm}(\theta,\phi)\rangle
+=
+\frac{1}{4\pi}\iint_{\Omega} Y_{lm}^{*}(\theta,\phi)\cdot Y_{lm}(\theta,\phi)\,d\Omega
+\]
+where :
+\[
+d\Omega=\sin\theta\,d\theta\,d\phi
+\]
+Quindi queste funzioni sono ortogonali e hanno una norma unitaria rispetto al prodotto scalare. Si può anche dimostrare che $\Psi_{lm}(\theta,\phi)$ sia una base ortonormale completa, quindi ogni funzione sulla sfera è rappresentabile come una serie infinita di armoniche sferiche:\[
+f(\theta,\phi)=\sum_{l=0}^{\infty}\sum_{m=-l}^{l} f_{lm}\,Y_{lm}(\theta,\phi)
+\]
+con \[
+f_{lm}=\frac{1}{4\pi}\int f(\theta,\phi)\,Y_{lm}^{*}(\theta,\phi)\,d\Omega
+\]
+il perché di qest'ultima formula è spiegato qui sotto:\\[2pt]
+$f(\theta,\phi)=\sum_{l=0}^{\infty}\sum_{m=-l}^{l} f_{lm}\,Y_{lm}(\theta,\phi)\implies$ moltiplico per $Y_{lm}^{*}(\theta,\phi)$ e ottengo:\[
+f(\theta,\phi)Y_{lm}^{*}(\theta,\phi)=\sum_{l=0}^{\infty}\sum_{m=-l}^{l} f_{lm}\,Y_{lm}(\theta,\phi)Y_{lm}^{*}(\theta,\phi) 
+\]
+Poi vado ad integrare su tutta la sfera, e poiché le armoniche soddisfano la relazione: \[
+\int Y_{lm}(\theta,\phi)\,Y^{*}_{l'm'}(\theta,\phi)\,d\Omega
+=
+\delta_{ll'}\,\delta_{mm'}
+\]
+allora otteniamo il risultato desiderato. 
+\subsectio{The spherical harmonics expansion (3)}
+\[
+\text{Data una funzione regolare } f \text{ sulla sfera unitaria (il potenziale magnetico sulla}
+\]
+\[
+\text{superficie terrestre), si può costruire facilmente la funzione armonica } V \text{ che}
+\]
+\[
+\text{soddisfa le condizioni al contorno assegnate } V(r=1,\theta,\phi)=f(\theta,\phi):
+\]
+
+\begin{enumerate}
+    \item Espandere la funzione \( f \) in armoniche sferiche:
+    \[
+    f(\theta,\phi)=\sum_{l=0}^{\infty}\sum_{m=-l}^{l} f_{lm}\,Y_{lm}(\theta,\phi)
+    \]
+
+    \item Costruire la funzione:
+    \[
+    V(r,\theta,\phi)=\sum_{l=0}^{\infty}\sum_{m=-l}^{l} f_{lm}\,r^l\,Y_{lm}(\theta,\phi)
+    \]
+\end{enumerate}
+
+Questa funzione diverge per \( r\to\infty \); essa viene usata per funzioni definite per \( r<1 \)
+(soluzioni interne). Se invece cerchiamo soluzioni esterne alla sfera unitaria
+(cioè nello spazio esterno alla Terra, se le sorgenti sono principalmente interne), esse sono:
+
+\[
+V(r,\theta,\phi)=\sum_{l=0}^{\infty}\sum_{m=-l}^{l} f_{lm}\,r^{-(l+1)}\,Y_{lm}(\theta,\phi)
+\]
+\subsection{spherical harmonics}
+Quando m=0 e $e^{im\phi}=1$ le armoniche sferiche sono dette \emph{zonali}. Tali armoniche non dipendono dalla longitudine e dividono la sfera in zone. Per un armonica di grado l e ordine m ci sono $l-m$ passaggi attraverso lo zero lungo il \emph{meridiano}, e ci sono $2m$ passaggi per lo zero se mi muovo lungo un parallelo. Al fine di descrivere strutture più fini di B ho bisogno di armoniche sferiche di grado più elevato. 
+
+\subsection{Legendre polynomials and associated Legendre functions}
+In questa sezione riportiamo le funzioni associate di Legendre, visto che sono un argomento non chiesto all'esame. Le funzioni associate di Legendre sono così fatte:\[
+P_{lm}(\cos{\theta})\quad o \quad  P_{lm}(u)=\frac{d^mP_l}{du^m}
+\]
+Dove $P_l$ sono i polinomi di Legendre e sono pari a:\[
+P_l(u)=\frac{1}{2^l\,l!}\frac{d^l}{du^l}\left[(u^2-1)^l\right]
+\]
 \end{document}

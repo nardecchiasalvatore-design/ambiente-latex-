@@ -1,0 +1,634 @@
+\documentclass[12pt,a4paper,oneside]{extreport}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[italian]{babel}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{float}
+\geometry{
+    top=25mm,
+    bottom=25mm,
+    left=30mm,
+    right=25mm
+}
+
+\onehalfspacing
+
+% Dati principali
+\newcommand{\ProjectTitle}
+{Ottimizzazione di un trasferimento orbitale a tempo minimo}
+
+\newcommand{\DegreeProgram}
+{Corso di Laurea in Ingegneria Aerospaziale}
+
+\newcommand{\Department}
+{Dipartimento di Ingegneria Industriale}
+
+\newcommand{\CourseName}
+{Traiettorie ottime per i veicoli aereospaziali}
+
+\newcommand{\ProfessorName}
+{Prof. Circi}
+
+\newcommand{\StudentName}
+{Salvatore Nardecchia}
+
+\newcommand{\StudentNumber}
+{2122311}
+
+\newcommand{\AcademicYear}
+{2025--2026}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=blue,
+    pdftitle={\ProjectTitle},
+    pdfauthor={\StudentName}
+}
+
+\begin{document}
+
+%============================================================
+% FRONTESPIZIO
+%============================================================
+
+\begin{titlepage}
+\begin{center}
+
+\vspace*{15mm}
+
+{\Large\bfseries \Department}
+
+\vspace{6mm}
+
+{\Large \DegreeProgram}
+
+\vfill
+
+{\LARGE\bfseries \ProjectTitle}
+
+\vspace{15mm}
+
+{\large Tesina del corso di}
+
+\vspace{3mm}
+
+{\Large\bfseries \CourseName}
+
+\vfill
+
+\begin{tabular}{rl}
+\textbf{Studente:} & \StudentName \\[4pt]
+\textbf{Matricola:} & \StudentNumber \\[4pt]
+\textbf{Docente:} & \ProfessorName
+\end{tabular}
+
+\vfill
+
+{\large Anno Accademico \AcademicYear}
+
+\end{center}
+\end{titlepage}
+
+%============================================================
+% INDICE
+%============================================================
+
+\pagenumbering{arabic}
+
+\tableofcontents
+
+\clearpage
+
+%============================================================
+% INIZIO TESINA
+%============================================================
+
+\pagenumbering{arabic}
+
+\chapter{Introduzione}
+Il problema trattato in tale lavoro riguarda l'ottimmizzazione di un trasferimento orbitale da un orbita con raggio iniziale pari a r0 a un orbita con  raggio finale rf nel minor tempo possibile. Quindi in tale trattazione l'indice di costo da ottimizzare  sarà pari a:
+\begin{equation}
+J = t_f
+\label{eq:costo_tempo_minimo}
+\end{equation}
+Per la risoluzione di tale problema partiremo prima dalle equazioni del moto che governano un transferimento orbitale, le quali risultano essere in funzioni  dei controlli , i quali dovranno essere ottimizati per ottenere la migliore traiettoria a tempo minimo. Una volta fatto questo andremo a definire l'hamiltoniana e il costato attraverso i quali, tramite il principio del minimo di Pontryagin andremo a trovare i controlli ottimi . Fatta questa prima parte di introduzione al problema andremo a spiegare come è stato implementato il problema nel calcolatore con i parametri scelti e poi infine andremo a analizzare le conclusioni con i rispettivi grafici. 
+\chapter{Definizione del problema}
+\subsection{Equazioni del moto}
+Il transferimento orbitale da un orbita iniziale di raggio r0 a un orbita finale di raggio rf è governata da cinque equazioni differenziali che dovranno essere inserite all'interno del calcolatore per essere integrate. Ecco le equazioni:
+\begin{equation}
+\left\{
+\begin{aligned}
+\dot r &= v \\[6pt]
+\dot h &= \frac{T_{\max}u_1 r\cos u_2}{m} \\[6pt]
+\dot v &= \frac{T_{\max}u_1\sin u_2}{m}
+       + \frac{h^2}{r^3}
+       - \frac{1}{r^2} \\[6pt]
+\dot m &= -\frac{T_{\max}u_1}{c} \\[6pt]
+\dot \theta &= \frac{h}{r^2}
+\end{aligned}
+\right.
+\label{eq:equazioni_moto}
+\end{equation}
+Dove:
+
+
+\begin{itemize}
+    \item $h$ rappresenta il momento angolare specifico del veicolo spaziale;
+    
+    \item $u_1$ rappresenta il modulo normalizzato della spinta ed è
+    generalmente compreso nell'intervallo
+    \[
+    0 \leq u_1 \leq 1;
+    \]
+    
+    \item $u_2$ rappresenta l'angolo che definisce la direzione della spinta
+    rispetto alla direzione tangenziale locale.
+\end{itemize}
+Le condizioni iniziali e finali sono le seguenti, imposte dal problema:
+
+
+\begin{equation}
+r(0)=1,
+\qquad
+h(0)=1,
+\qquad
+v(0)=0,
+\qquad
+m(0)=1,
+\qquad
+\theta(0)=0.
+\label{eq:condizioni_iniziali}
+\end{equation}
+\begin{equation}
+r(t_f)=r_f,
+\qquad
+h(t_f)=h_f=\sqrt{r_f},
+\qquad
+v(t_f)=0.
+\label{eq:condizioni_finali}
+\end{equation}
+
+
+\subsection{Hamiltoniana}
+Adesso andiamo a definire la funzione hamiltoniana dalla quale possiamo ricavare le equazioni che governano la'evoluzioni dei costati. La funzione hamiltoniana è così fatta:
+\begin{equation}
+\small
+H =
+P_r v
++ P_h\frac{T_{\max}u_1r\cos u_2}{m}
++ P_v\left(
+\frac{T_{\max}u_1\sin u_2}{m}
++\frac{h^2}{r^3}
+-\frac{1}{r^2}
+\right)
+-P_m\frac{T_{\max}u_1}{c}
++P_{\theta}\frac{h}{r^2}.
+\label{eq:hamiltoniana}
+\end{equation}
+Dove il vettore dei costati è il seguente:
+\begin{equation}
+\mathbf{P}(t)=
+\begin{bmatrix}
+P_r(t) \\
+P_h(t) \\
+P_v(t) \\
+P_m(t) \\
+P_{\theta}(t)
+\end{bmatrix}.
+\label{eq:vettore_costati}
+\end{equation}
+Adesso posso ricavare le equazioni differenziali che governano i costati attraverso la relazione:
+\begin{equation}
+\dot{\mathbf{P}}
+=
+-\frac{\partial \mathcal{H}}{\partial \mathbf{x}}.
+\label{eq:equazioni_costati_generali}
+\end{equation}
+Da queste equazioni, poiché l'hamiltoniana non dipende da ${\theta}$ allora $P_{\theta}=costante$.
+Il passo successivo è quello di andare a definire le condizioni di trasversalità che saranno così fatte: 
+\begin{equation}
+\left\{
+\begin{aligned}
+\mathbf{P}^{T}(t_f)
+&=
+\frac{\partial J}{\partial \mathbf{x}_f}
++
+\boldsymbol{\lambda}^{T}
+\frac{\partial \boldsymbol{\omega}}
+{\partial \mathbf{x}_f},
+\\[6pt]
+H(t_f)
+&=
+-\frac{\partial J}{\partial t_f}
+-
+\boldsymbol{\lambda}^{T}
+\frac{\partial \boldsymbol{\omega}}
+{\partial t_f}.
+\end{aligned}
+\right.
+\label{eq:trasversalita_generale}
+\end{equation}
+Dove il vettore dei vincoli finali geometrici sarà pari a:
+\begin{equation}
+\boldsymbol{\omega} =
+\begin{bmatrix}
+r(t_f)-r_f \\
+h(t_f)-h_f \\
+v(t_f)
+\end{bmatrix}
+=
+\begin{bmatrix}
+0 \\
+0 \\
+0
+\end{bmatrix}.
+\label{eq:vincoli_finali}
+\end{equation}
+Poiché l'indice di costo risulta essere pari al tempo finale, allora sviluppando le equazioni di trasversalità otteniamo le seguenti condizioni dei costati al tempo finale:
+\begin{equation}
+\left\{
+\begin{aligned}
+P_r(t_f) &= \lambda_1, \\
+P_h(t_f) &= \lambda_2, \\
+P_v(t_f) &= \lambda_3, \\
+P_m(t_f) &= 0, \\
+P_{\theta}(t_f) &= 0.
+\end{aligned}
+\right.
+\label{eq:costati_finali}
+\end{equation}
+Una cosa importante da osservare è il controllo dell'Hamiltoniana. Infatti la condizione di trasversalità implica che:
+\[
+H(t_f)=-\frac{\partial J}{\partial t_f}=-1
+\]
+E quindi l'hamiltoniana finale dovrà essere pari a:
+\[
+H(t) = -1 \qquad \forall t \in [0,t_f]
+\]
+Questa risult essere un ottimo controllo per andare a vedre se il problema è stato elaborato in maniera corretta. 
+\subsection{controllo ottimo}
+Adesso la parte più importante consta nella definizione del controlo ottimo. Basandoci sul principio del minimo di Pontryagin, il controllo ottimo è quello che minimizza l'hamiltoniana istante per istante. Per quanto riguarda il controllo u2 otteniamo i seguenti risultati:
+\begin{equation}
+\cos u_2^*
+=
+-\frac{rP_h}{\sqrt{P_v^2+r^2P_h^2}},
+\qquad
+\sin u_2^*
+=
+-\frac{P_v}{\sqrt{P_v^2+r^2P_h^2}}.
+\label{eq:controllo_angolo_spinta}
+\end{equation}
+Invece per quanto riguarda l'ottimizzazione andiamo prima a definire la funzione di commutazione che deriva dalla sostituzione del controlo ottimo u2 nell'hamiltoniana, essa risulta essere pari a:
+
+
+\begin{equation}
+\Theta
+=
+-\sqrt{P_v^2+r^2P_h^2}
+-\frac{P_m m}{c}.
+\label{eq:funzione_commutazione}
+\end{equation}
+
+Poiché nel problema a tempo minimo la funzione di commutazione risulta
+negativa lungo la traiettoria, il controllo ottimo sul modulo della spinta è
+
+\begin{equation}
+u_1^* = 1
+\qquad \text{se} \qquad
+\Theta < 0.
+\label{eq:controllo_modulo_spinta}
+\end{equation}.
+\subsection{Funzione da minimizzare}
+La funzione $J_{con}$ che l'algorimo dovrà cercare di minimizzare sarà la seguente:
+\begin{equation}
+\begin{aligned}
+J_{\mathrm{con}} ={}&
+w_1\left[r(t_f)-r_f\right]^2
++w_2\left[h(t_f)-h_f\right]^2 \\
+&+w_3\,v^2(t_f)
++w_4\,P_m^2(t_f)
++w_5\left[H(t_f)+1\right]^2.
+\end{aligned}
+\label{eq:funzione_costo_numerica}
+\end{equation}
+Dove i coefficienti $\omega$ sono i pesi 
+\chapter{Implementazione numerica}
+
+Ora che abbiamo definito il problema con tutte le equazioni possiamo iniziare l'implentazione. L'algoritmo prende in unput un vettore V di cinque elementi che contiene tutti i costati iniziali, ad eccezione del costato ${P_\theta}$, in quanto come visto nel capitolo due esso rimane costante, e per questo motivo lo sceglierò pari a zero, e contiene anche il tempo finale. Una volta preso in input tale vettore l'algoritmomo cercherà di minimizzare la funzione di costo $J_{con}$, ridando inoltre in output anche il vettore V dei costati finali e del tempo finale ottimo. 
+\subsection{definizione vettori iniziali}
+Ora la prima parte è quella di definire i valori iniziali che serviranno per andare a integrare le equazioni del moto, ed essi saranno pari a:
+I valori iniziali e finali scelti per il problema sono:
+\begin{itemize}
+    \setlength{\itemsep}{0pt}
+    \setlength{\parskip}{0pt}
+    \setlength{\parsep}{0pt}
+    \setlength{\topsep}{2pt}
+
+    \item \textbf{Raggio iniziale:}
+    \[
+    r(0)=r_0=1
+    \]
+    Il valore è adimensionale ed è stato normalizzato rispetto al raggio di riferimento
+    \[
+    R_{\mathrm{ref}}=158\,667\ \text{km}.
+    \]
+
+    \item \textbf{Massa iniziale:}
+    \[
+    m(0)=m_0=1
+    \]
+    Il valore è adimensionale ed è stato normalizzato rispetto alla massa di riferimento
+    \[
+    m_{\mathrm{ref}}=1000\ \text{kg}.
+    \]
+
+    \item \textbf{Momento angolare specifico iniziale:}
+    \[
+    h(0)=h_0=1.
+    \]
+
+    \item \textbf{Velocità radiale iniziale:}
+    \[
+    v(0)=v_0=0.
+    \]
+
+    \item \textbf{Anomalia iniziale:}
+    \[
+    \theta(0)=\theta_0=0.
+    \]
+
+    \item \textbf{Raggio finale:}
+    \[
+    r(t_f)=r_f=1.5
+    \]
+    Anche il raggio finale è adimensionale ed è stato normalizzato rispetto allo stesso raggio di riferimento
+    \[
+    R_{\mathrm{ref}}=158\,667\ \text{km}.
+    \]
+
+    \item \textbf{Momento angolare specifico finale:}
+    \[
+    h(t_f)=h_f=\sqrt{r_f}=\sqrt{1.5}.
+    \]
+
+    \item \textbf{Velocità radiale finale:}
+    \[
+    v(t_f)=0.
+    \]
+
+\end{itemize}
+Adesso dobbiamo definire i parametri propulsivi che compaiono nelle equazioni del moto, ovvero la spinta massima normalizzata \(T_{\max}\) e il parametro \(c\). Nel codice MATLAB tali parametri sono stati assegnati come valori noti e mantenuti costanti durante tutta l'integrazione numerica.
+
+In particolare, si è scelto:
+\[
+T_{\max}=0.05,
+\qquad
+c=5.
+\]
+
+Il parametro \(T_{\max}\) rappresenta la spinta massima disponibile, mentre \(c\) rappresenta la velocità di scarico equivalente. Quest'ultimo compare nell'equazione della massa:
+\[
+\dot m = -\frac{T_{\max}u_1}{c},
+\]
+e regola quindi il consumo di massa durante il trasferimento orbitale.
+Adesso andiamo a definire i pesi utilizzati nella funzione di costo numerica \(J_{\mathrm{con}}\).
+Tali coefficienti servono a dare maggiore o minore importanza ai diversi vincoli finali che l'algoritmo deve soddisfare.
+
+I pesi scelti nell'implementazione numerica sono:
+
+\[
+w_1=1000,
+\qquad
+w_2=1000,
+\qquad
+w_3=1000,
+\qquad
+w_4=50,
+\qquad
+w_5=300.
+\]
+
+In particolare, i pesi \(w_1\), \(w_2\) e \(w_3\) sono associati rispettivamente agli errori finali su raggio, momento angolare specifico e velocità radiale. Il peso \(w_4\) è associato alla condizione finale sul costato della massa \(P_m(t_f)\), mentre il peso \(w_5\) è associato alla condizione finale sull'Hamiltoniana.
+L'ultima cosa da fare è quella di definire il vettore iniziale le cui componenti verrano modificate via via allo scopo di minimizzare la funzione di costo. Il vettore scelto è il seguente:
+\[
+\mathbf{V}_0
+=
+\begin{bmatrix}
+4.8977 \\
+-19.4451 \\
+-1.9652 \\
+2.5380 \\
+5.4469
+\end{bmatrix}.
+\]
+\subsection{Costruzione del codice}
+Una volta definiti i vettori iniziali il codice MATLAB sar
+à costruito attraverso una function che prende in input il vettore V e darà in output la funzione di costo da ottimizzare. Il calcolatore andrà ad integrare le equazioni del moto che abbiamo definito in precedenza attraverso l'operatore ode113. Tali equazioni sono sia le equazioni del moto, ma anche le equazioni differenziali che vanno a governare i costati. Poi, una volta integrate le equazioni, i risultati andranno messi all'interno della funzione $J_{con}$ che ci darà l'output dell'algoritmo.
+Per ottimizzare tale funzione risulterà essere necessario creare un'altra function che riceverà in input la funzione di costo e ci darà in output il vettore V ottimo dei costati e del tempo finale, che utilizzerà la funzione implementata di Matlab fminsearch. 
+\chapter{Risultati}
+Una volta fatto partire il codice con il vettore indicato in precedenza è stato prodotto il seguente risultato:
+\[
+\mathbf{V}
+=
+\begin{bmatrix}
+P_r(0) \\
+P_h(0) \\
+P_v(0) \\
+P_m(0) \\
+t_f
+\end{bmatrix}.
+\]
+
+Il vettore ottimo ottenuto è
+
+\[
+\mathbf{V}_{\mathrm{ottimo}}
+=
+\begin{bmatrix}
+4.8966 \\
+-19.4422 \\
+-1.9651 \\
+2.5381 \\
+5.4489
+\end{bmatrix}.
+\]
+
+
+Poiché le equazioni del moto sono state scritte in forma adimensionale,
+anche il tempo finale \(t_f\) ottenuto dall'ottimizzazione risulta
+adimensionale. Per ricavare il corrispondente tempo fisico si introduce
+la scala temporale di riferimento
+
+\[
+t_{\mathrm{ref}}
+=
+\sqrt{\frac{R_{\mathrm{ref}}^3}{\mu}}.
+\]
+
+Avendo scelto
+
+\[
+R_{\mathrm{ref}}=158\,667\ \text{km},
+\]
+
+e assumendo come corpo centrale Saturno, con
+
+\[
+\mu_{\mathrm{Sat}}
+=
+37\,931\,206.23\ \text{km}^3/\text{s}^2,
+\]
+
+si ottiene
+
+\[
+t_{\mathrm{ref}}
+\simeq
+10\,262\ \text{s}.
+\]
+
+Il tempo finale fisico è quindi
+
+\[
+t_{f,\mathrm{fisico}}
+=
+t_f t_{\mathrm{ref}}
+=
+5.4489 \cdot 10\,262
+\simeq
+55\,917\ \text{s}.
+\]
+
+Convertendo tale valore:
+
+\[
+t_{f,\mathrm{fisico}}
+\simeq
+15.53\ \text{h}
+\simeq
+0.647\ \text{giorni}.
+\]
+Il valore minimo della funzione di costo ottenuto al termine
+dell'ottimizzazione è
+
+\[
+J_{\min}=0.0716.
+\]
+
+Tale valore, sufficientemente piccolo, indica che l'algoritmo è riuscito
+a ridurre gli errori sui vincoli finali e sulle condizioni di
+trasversalità imposte nella funzione di costo numerica.
+Inoltre l'algoritmo restituisce anche i resiudi finali, ovvero la differenza tra i valori finali trovati dall'algoritmo di velocità, momento angolare, hamiltoniana e raggio finale e quelli imposti all'inizio del problema:
+I residui ottenuti al termine dell'ottimizzazione sono:
+
+\[
+\begin{aligned}
+r(t_f)-r_f &= 0.0033446, \\
+h(t_f)-h_f &= -0.0010591, \\
+v(t_f) &= -0.0028312, \\
+P_m(t_f) &= -0.0044768, \\
+H(t_f)+1 &= 0.012949.
+\end{aligned}
+\]
+
+Tali valori risultano sufficientemente piccoli e indicano che i vincoli
+imposti nella funzione di costo sono stati soddisfatti con buona
+accuratezza.
+
+\subsection{Grafici}
+\
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[
+        width=0.98\textwidth,
+        trim=1.2cm 0.4cm 1.2cm 0.4cm,
+        clip
+    ]{images/Traiettorie ottime/grafico_traiettoria.png}
+    \caption{Traiettoria del trasferimento orbitale}
+    \label{fig:grafico_traiettoria}
+\end{figure}
+
+La Figura~\ref{fig:grafico_traiettoria} mostra la traiettoria ottima
+seguita dal veicolo durante il trasferimento orbitale. Il veicolo parte
+dall'orbita iniziale e raggiunge progressivamente l'orbita finale
+soddisfacendo i vincoli imposti dal problema di controllo ottimo.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[
+        width=1.02\textwidth,
+        trim=0.5cm 0.3cm 0.5cm 0.3cm,
+        clip
+    ]{images/Traiettorie ottime/grafico_stati.png}
+    \caption{Andamento degli stati durante il trasferimento}
+    \label{fig:grafico_stati}
+\end{figure}
+
+La Figura~\ref{fig:grafico_stati} rappresenta l'evoluzione temporale
+delle variabili di stato. In particolare, il raggio orbitale aumenta
+fino a raggiungere il valore finale, mentre la massa diminuisce a causa
+del consumo di propellente.
+
+\vspace{-0.3cm}
+
+
+
+
+\newpage
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[
+        width=1.02\textwidth,
+        trim=0.5cm 0.3cm 0.5cm 0.3cm,
+        clip
+    ]{images/Traiettorie ottime/grafico_spinta.png}
+    \caption{Angolo e modulo della spinta ottima}
+    \label{fig:grafico_spinta}
+\end{figure}
+
+\vspace{-0.3cm}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[
+        width=1.02\textwidth,
+        trim=0.5cm 0.3cm 0.5cm 0.3cm,
+        clip
+    ]{images/Traiettorie ottime/grafico_errore_radiale.png}
+    \caption{Errore radiale rispetto all'orbita finale}
+    \label{fig:grafico_errore_radiale}
+\end{figure}
+
+\newpage
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[
+        width=1.02\textwidth,
+        trim=0.5cm 0.3cm 0.5cm 0.3cm,
+        clip
+    ]{images/Traiettorie ottime/grafico_Hamiltoniana.png}
+    \caption{Hamiltoniana lungo la traiettoria ottima}
+    \label{fig:grafico_hamiltoniana}
+\end{figure}
+Tale figura mostra come il valore dell'hamiltoniana vari di molto poco attorno a -1 rispettando le condizioni imposte nel capitolo 2. 
+%
+% \chapter{Modello matematico}
+%
+% \chapter{Principio del Massimo di Pontryagin}
+%
+% \chapter{Implementazione numerica}
+%
+% \chapter{Risultati}
+%
+% \chapter{Conclusioni}
+
+\end{document}
